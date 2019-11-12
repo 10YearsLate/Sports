@@ -1,5 +1,8 @@
+import java.util.*;
+import java.io.*;
+
 public class Badhorse{
-  class Node{
+  static class Node{
     
     String name;
     ArrayList<Node> edges;
@@ -11,45 +14,51 @@ public class Badhorse{
   
   }
 
+  public static Node[] addedge(Node a,Node b){
+        a.edges.add(b);
+        b.edges.add(a);
+        Node[] n=new Node[2];
+        n[0]=a;
+        n[1]=b;
+        return n;
+  }
+
 
   public static void main(String[] args){
-  
+        boolean flag=true;
         HashSet<Node> hs=new HashSet<Node>();
-  
-        Node Dead=new Node("Dead");
-        hs.add(Dead);
-        
-        Node Fake=new Node("Fake");
-        hs.add(Fake);
-        
-        Node Fury=new Node("Fury");
-        hs.add(Fury);
-        
-        Dead.edges.add(Fake);
-        Fake.edges.add(Dead);
-        
-        Fake.edges.add(Fury);
-        Fury.edges.add(Fake);
-        
-        Fury.edges.add(Dead);
-        Dead.edges.add(Fury);
-        
-        
-        while(hs.hasNext()){
-        
-        Node n=hs.next();
-        for(int i=0;i<n.edges.size();i++){
-            Node edge=n.edges.get(i);
-            for(int j=0;j<edge.edges.size();j++){
-              if(n.edges.contains(edge.edges.get(i)) {System.out.println("No";return;}
+        Scanner in =new Scanner(new BufferedReader(new InputStreamReader(System.in)));
+        int T=in.nextInt();
+        for(int a=1;a<=T;a++){
+            int M=in.nextInt();
+            for(int b=0;b<M;b++){
+                Node n1=new Node(in.next());
+                Node n2=new Node(in.next());
+                Node[] nd=addedge(n1, n2);
+                hs.add(nd[0]);
+                hs.add(nd[1]);
+                
             }
+            HashSet<String>nhs=new HashSet<String>();
+            Iterator<Node> hsi=hs.iterator();
+            while(hsi.hasNext() && flag){
+                
+                Node n=(Node)hsi.next();
+                if(nhs.contains(n.name)) continue;
+                else{
+                    nhs.add(n.name);
+
+                System.out.println(n.name);
+                for(int i=0;i<n.edges.size();i++){
+                    Node edge=n.edges.get(i);
+                    for(int j=0;j<edge.edges.size();j++){
+                        if(edge.name==(edge.edges.get(i).name)) {System.out.println("No");j=edge.edges.size();i=n.edges.size();flag=false;}
+                    }
+                }
+            }
+        
+            } if(flag) System.out.println("Yes");
         }
-        
-        }
-        
-        
-        
-  
   }
 
 }
