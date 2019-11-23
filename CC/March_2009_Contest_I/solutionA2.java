@@ -19,7 +19,7 @@ public class solutionA2{
 	
 	public static void remedy(){
 		
-		boolean flag=true;
+		boolean flag=true;;
 		
 		Scanner sc=new Scanner(new BufferedReader(new InputStreamReader(System.in)));
 		
@@ -44,8 +44,10 @@ public class solutionA2{
 		q.add(1);
 		
 		for(int i=0;i<k;i++){
+
+            flag=true;
 		
-			al=new ArrayList<Integer>();System.out.println(al.size());
+			al=new ArrayList<Integer>();//System.out.println(al.size());
 			if(leaves[i]>q.size()) {flag=false;break;} 
 			while(leaves[i]>0){
 			
