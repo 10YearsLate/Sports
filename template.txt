@@ -1,0 +1,21 @@
+import java.util.*;
+import java.io.*;
+import java.lang.*;
+
+public class A{
+
+    public static void main(String[] args){
+
+        long start = System.currentTimeMillis();
+	
+		remedy();
+		
+		long end = System.currentTimeMillis();
+		float sec = (end - start) / 1000F; 
+		System.out.println(sec + " seconds");
+    }
+
+    private static void remedy() {
+
+    }
+}
